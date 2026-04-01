@@ -3,22 +3,114 @@
     {
       "category": "☕ Café & Chaud",
       "title": "9ahwa 3arby",
-      "price": 12,
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnUYfnBdxxlqpp_eu99X0cM7XEkbpXOivVoA&s"
+      "price": 1.2,
+      "description": "Café arabe traditionnel, servi avec des dattes de saison.",
+      "image": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      "category": "☕ Café & Chaud",
+      "title": "Espresso",
+      "price": 1.5,
+      "description": "Un espresso intense et corsé, tiré à la perfection.",
+      "image": "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      "category": "☕ Café & Chaud",
+      "title": "Cappuccino",
+      "price": 2.8,
+      "description": "Espresso onctueux surmonté d'une mousse de lait veloutée.",
+      "image": "https://images.unsplash.com/photo-1572442388796-11668a67e53d?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      "category": "☕ Café & Chaud",
+      "title": "Café Latte",
+      "price": 3.2,
+      "description": "Café doux au lait chaud, idéal pour commencer la journée.",
+      "image": "https://images.unsplash.com/photo-1561047029-3000c68339ca?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      "category": "☕ Café & Chaud",
+      "title": "Chocolat Chaud",
+      "price": 3.5,
+      "description": "Cacao artisanal fondant, enrichi en chocolat noir 70%.",
+      "image": "https://images.unsplash.com/photo-1542990253-a781e5adf041?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      "category": "☕ Café & Chaud",
+      "title": "Noisette",
+      "price": 2.0,
+      "description": "Espresso agrémenté d'une touche de mousse de lait.",
+      "image": "https://images.unsplash.com/photo-1489990985914-9c67416c78c0?q=80&w=800&auto=format&fit=crop"
     },
     {
       "category": "🥤 Jus & Frais",
-      "title": "Jus d'orange ",
-      "price": 5,
-      "description": "machroub el ta9aa ",
-      "image": "data:image/jpeg;base64,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"
+      "title": "Jus d'orange",
+      "price": 5.0,
+      "description": "Oranges pressées à la minute, fraîches et naturelles.",
+      "image": "https://images.unsplash.com/photo-1600271886742-f049cd451bba?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      "category": "🥤 Jus & Frais",
+      "title": "Smoothie Fraises",
+      "price": 6.5,
+      "description": "Fraises fraîches mixées avec yaourt et miel de fleurs.",
+      "image": "https://images.unsplash.com/photo-1553530666-ba11a90ac54e?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      "category": "🥤 Jus & Frais",
+      "title": "Citronnade Menthe",
+      "price": 5.5,
+      "description": "Limonade maison à la menthe fraîche et sirop naturel.",
+      "image": "https://images.unsplash.com/photo-1523371054106-bbf80586c861?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      "category": "🥤 Jus & Frais",
+      "title": "Jus de Mangue",
+      "price": 6.0,
+      "description": "Mangue tropical fraîchement pressée, douce et veloutée.",
+      "image": "https://images.unsplash.com/photo-1546173159-315724a31696?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      "category": "🥤 Jus & Frais",
+      "title": "Ice Tea Pêche",
+      "price": 4.5,
+      "description": "Thé glacé maison infusé à la pêche, léger et rafraîchissant.",
+      "image": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?q=80&w=800&auto=format&fit=crop"
     },
     {
       "category": "🍳 Brunch & Plats",
       "title": "Le Grand Petit Déjeuner",
       "price": 17.5,
-      "image": "https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?q=80&w=800&auto=format&fit=crop",
-      "description": "Œufs, saucisses, haricots blancs en sauce, salade fraîche et toasts."
+      "description": "Œufs, saucisses, haricots blancs en sauce, salade fraîche et toasts.",
+      "image": "https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      "category": "🍳 Brunch & Plats",
+      "title": "Avocado Toast",
+      "price": 14.0,
+      "description": "Pain grillé artisanal, avocat écrasé, œuf poché et graines de sésame.",
+      "image": "https://images.unsplash.com/photo-1541519227354-08fa5d50c820?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      "category": "🍳 Brunch & Plats",
+      "title": "Crêpes Sucrées",
+      "price": 9.0,
+      "description": "Crêpes fines au beurre, servies avec confiture maison et crème fraîche.",
+      "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      "category": "🍳 Brunch & Plats",
+      "title": "Pancakes Moelleux",
+      "price": 11.0,
+      "description": "Pancakes épais au beurre, nappés de sirop d'érable et fruits rouges.",
+      "image": "https://images.unsplash.com/photo-1528207776546-365bb710ee93?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      "category": "🍳 Brunch & Plats",
+      "title": "Shakshuka Madelina",
+      "price": 13.5,
+      "description": "Œufs pochés dans une sauce tomate épicée, accompagnés de pain artisanal.",
+      "image": "https://images.unsplash.com/photo-1590412200988-a436970781fa?q=80&w=800&auto=format&fit=crop"
     }
   ]
 }

@@ -7,7 +7,7 @@ import MenuPage from './pages/MenuPage';
 
 export default function App() {
   return (
-    <Router>
+    <Router basename="/madelina-coffeev2">
       <div className="min-h-screen flex flex-col selection:bg-madelina-terracotta selection:text-white">
         <Routes>
           {/* Admin route: nkhalliwah feragh bech yemchi lel public/admin direct */}
