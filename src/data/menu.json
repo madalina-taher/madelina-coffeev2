@@ -1,115 +1,115 @@
 {
   "plats": [
     {
-      "category": "☕ Café & Chaud",
+      "category": "â CafÃ© & Chaud",
       "title": "9ahwa 3arby",
       "price": 1.2,
-      "description": "Café arabe traditionnel, servi avec des dattes de saison.",
+      "description": "CafÃ© arabe traditionnel, servi avec des dattes de saison.",
       "image": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=800&auto=format&fit=crop"
     },
     {
-      "category": "☕ Café & Chaud",
+      "category": "â CafÃ© & Chaud",
       "title": "Espresso",
       "price": 1.5,
-      "description": "Un espresso intense et corsé, tiré à la perfection.",
+      "description": "Un espresso intense et corsÃ©, tirÃ© Ã  la perfection.",
       "image": "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?q=80&w=800&auto=format&fit=crop"
     },
     {
-      "category": "☕ Café & Chaud",
+      "category": "",
       "title": "Cappuccino",
-      "price": 2.8,
-      "description": "Espresso onctueux surmonté d'une mousse de lait veloutée.",
-      "image": "https://images.unsplash.com/photo-1572442388796-11668a67e53d?q=80&w=800&auto=format&fit=crop"
+      "price": 10,
+      "image": "https://images.unsplash.com/photo-1572442388796-11668a67e53d?q=80&w=800&auto=format&fit=crop",
+      "description": "Espresso onctueux surmontÃ© d'une mousse de lait veloutÃ©e."
     },
     {
-      "category": "☕ Café & Chaud",
-      "title": "Café Latte",
+      "category": "â CafÃ© & Chaud",
+      "title": "CafÃ© Latte",
       "price": 3.2,
-      "description": "Café doux au lait chaud, idéal pour commencer la journée.",
+      "description": "CafÃ© doux au lait chaud, idÃ©al pour commencer la journÃ©e.",
       "image": "https://images.unsplash.com/photo-1561047029-3000c68339ca?q=80&w=800&auto=format&fit=crop"
     },
     {
-      "category": "☕ Café & Chaud",
+      "category": "â CafÃ© & Chaud",
       "title": "Chocolat Chaud",
       "price": 3.5,
       "description": "Cacao artisanal fondant, enrichi en chocolat noir 70%.",
       "image": "https://images.unsplash.com/photo-1542990253-a781e5adf041?q=80&w=800&auto=format&fit=crop"
     },
     {
-      "category": "☕ Café & Chaud",
+      "category": "â CafÃ© & Chaud",
       "title": "Noisette",
-      "price": 2.0,
-      "description": "Espresso agrémenté d'une touche de mousse de lait.",
+      "price": 2,
+      "description": "Espresso agrÃ©mentÃ© d'une touche de mousse de lait.",
       "image": "https://images.unsplash.com/photo-1489990985914-9c67416c78c0?q=80&w=800&auto=format&fit=crop"
     },
     {
-      "category": "🥤 Jus & Frais",
+      "category": "ð¥¤ Jus & Frais",
       "title": "Jus d'orange",
-      "price": 5.0,
-      "description": "Oranges pressées à la minute, fraîches et naturelles.",
+      "price": 5,
+      "description": "Oranges pressÃ©es Ã  la minute, fraÃ®ches et naturelles.",
       "image": "https://images.unsplash.com/photo-1600271886742-f049cd451bba?q=80&w=800&auto=format&fit=crop"
     },
     {
-      "category": "🥤 Jus & Frais",
+      "category": "ð¥¤ Jus & Frais",
       "title": "Smoothie Fraises",
       "price": 6.5,
-      "description": "Fraises fraîches mixées avec yaourt et miel de fleurs.",
+      "description": "Fraises fraÃ®ches mixÃ©es avec yaourt et miel de fleurs.",
       "image": "https://images.unsplash.com/photo-1553530666-ba11a90ac54e?q=80&w=800&auto=format&fit=crop"
     },
     {
-      "category": "🥤 Jus & Frais",
+      "category": "ð¥¤ Jus & Frais",
       "title": "Citronnade Menthe",
       "price": 5.5,
-      "description": "Limonade maison à la menthe fraîche et sirop naturel.",
+      "description": "Limonade maison Ã  la menthe fraÃ®che et sirop naturel.",
       "image": "https://images.unsplash.com/photo-1523371054106-bbf80586c861?q=80&w=800&auto=format&fit=crop"
     },
     {
-      "category": "🥤 Jus & Frais",
+      "category": "ð¥¤ Jus & Frais",
       "title": "Jus de Mangue",
-      "price": 6.0,
-      "description": "Mangue tropical fraîchement pressée, douce et veloutée.",
+      "price": 6,
+      "description": "Mangue tropical fraÃ®chement pressÃ©e, douce et veloutÃ©e.",
       "image": "https://images.unsplash.com/photo-1546173159-315724a31696?q=80&w=800&auto=format&fit=crop"
     },
     {
-      "category": "🥤 Jus & Frais",
-      "title": "Ice Tea Pêche",
+      "category": "ð¥¤ Jus & Frais",
+      "title": "Ice Tea PÃªche",
       "price": 4.5,
-      "description": "Thé glacé maison infusé à la pêche, léger et rafraîchissant.",
+      "description": "ThÃ© glacÃ© maison infusÃ© Ã  la pÃªche, lÃ©ger et rafraÃ®chissant.",
       "image": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?q=80&w=800&auto=format&fit=crop"
     },
     {
-      "category": "🍳 Brunch & Plats",
-      "title": "Le Grand Petit Déjeuner",
+      "category": "ð³ Brunch & Plats",
+      "title": "Le Grand Petit DÃ©jeuner",
       "price": 17.5,
-      "description": "Œufs, saucisses, haricots blancs en sauce, salade fraîche et toasts.",
+      "description": "Åufs, saucisses, haricots blancs en sauce, salade fraÃ®che et toasts.",
       "image": "https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?q=80&w=800&auto=format&fit=crop"
     },
     {
-      "category": "🍳 Brunch & Plats",
+      "category": "ð³ Brunch & Plats",
       "title": "Avocado Toast",
-      "price": 14.0,
-      "description": "Pain grillé artisanal, avocat écrasé, œuf poché et graines de sésame.",
+      "price": 14,
+      "description": "Pain grillÃ© artisanal, avocat Ã©crasÃ©, Åuf pochÃ© et graines de sÃ©same.",
       "image": "https://images.unsplash.com/photo-1541519227354-08fa5d50c820?q=80&w=800&auto=format&fit=crop"
     },
     {
-      "category": "🍳 Brunch & Plats",
-      "title": "Crêpes Sucrées",
-      "price": 9.0,
-      "description": "Crêpes fines au beurre, servies avec confiture maison et crème fraîche.",
+      "category": "ð³ Brunch & Plats",
+      "title": "CrÃªpes SucrÃ©es",
+      "price": 9,
+      "description": "CrÃªpes fines au beurre, servies avec confiture maison et crÃ¨me fraÃ®che.",
       "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?q=80&w=800&auto=format&fit=crop"
     },
     {
-      "category": "🍳 Brunch & Plats",
+      "category": "ð³ Brunch & Plats",
       "title": "Pancakes Moelleux",
-      "price": 11.0,
-      "description": "Pancakes épais au beurre, nappés de sirop d'érable et fruits rouges.",
+      "price": 11,
+      "description": "Pancakes Ã©pais au beurre, nappÃ©s de sirop d'Ã©rable et fruits rouges.",
       "image": "https://images.unsplash.com/photo-1528207776546-365bb710ee93?q=80&w=800&auto=format&fit=crop"
     },
     {
-      "category": "🍳 Brunch & Plats",
+      "category": "ð³ Brunch & Plats",
       "title": "Shakshuka Madelina",
       "price": 13.5,
-      "description": "Œufs pochés dans une sauce tomate épicée, accompagnés de pain artisanal.",
+      "description": "Åufs pochÃ©s dans une sauce tomate Ã©picÃ©e, accompagnÃ©s de pain artisanal.",
       "image": "https://images.unsplash.com/photo-1590412200988-a436970781fa?q=80&w=800&auto=format&fit=crop"
     }
   ]
