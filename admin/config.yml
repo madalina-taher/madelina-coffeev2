@@ -1,0 +1,52 @@
+local_backend: false
+# Baddel hethom fel config.yml
+backend:
+  name: git-gateway
+  branch: main # Thabbet ennou esm el branch mte3ek 'main'
+
+media_folder: "public/images/menu"
+public_folder: "/images/menu"
+
+collections:
+  - name: "config-menu"
+    label: "☕ Menu Management"
+    files:
+      - label: "Madelina Coffee Shop"
+        name: "menu-data"
+        file: "src/data/menu.json"
+        editor:
+          preview: false 
+        fields:
+          - label: "La Carte"
+            name: "plats"
+            widget: "list"
+            # Houni el summary raddineh "Icon | Name | Price"
+            summary: '{{fields.category}} ➔ {{fields.title}} ({{fields.price}} DT)'
+            add_to_top: true
+            fields:
+              - label: "Catégorie"
+                name: "category"
+                widget: "select"
+                options: 
+                  - { label: "☕ Café & Chaud", value: "☕ Café & Chaud" }
+                  - { label: "🍰 Gâteaux", value: "🍰 Gâteaux" }
+                  - { label: "🍳 Cuisine & Brunch", value: "🍳 Cuisine & Brunch" }
+                  - { label: "🥤 Jus & Frais", value: "🥤 Jus & Frais" }
+              
+              - label: "Nom du Plat"
+                name: "title"
+                widget: "string"
+              
+              - label: "Prix (DT)"
+                name: "price"
+                widget: "number"
+                value_type: "float"
+              
+              - label: "Photo"
+                name: "image"
+                widget: "image"
+              
+              - label: "Description"
+                name: "description"
+                widget: "text"
+                required: false

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Madelina | Admin</title>
+  <style>
+    /* Apple-Style Minimalist UI */
+    :root {
+      --madelina-gold: #C08261;
+      --madelina-navy: #1A2332;
+      --bg-soft: #FBFBFD;
+    }
+
+    /* Global Reset */
+    body { background-color: var(--bg-soft) !important; }
+
+    /* Sidebar Clean Look */
+    .nc-app-container { background: white !important; }
+    aside { border-right: 1px solid #eee !important; background: white !important; }
+
+    /* List Item - Modern Card Style */
+    [class*="ListItemContainer"] {
+      background: white !important;
+      border: 1px solid #f0f0f0 !important;
+      border-radius: 20px !important;
+      margin-bottom: 15px !important;
+      padding: 10px !important;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.01) !important;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+
+    [class*="ListItemContainer"]:hover {
+      transform: scale(1.01);
+      border-color: var(--madelina-gold) !important;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05) !important;
+    }
+
+    /* Summary Styling (Category name) */
+    [class*="ListCardSummary"] {
+      color: var(--madelina-navy) !important;
+      font-weight: 500 !important;
+      font-size: 14px !important;
+    }
+
+    /* Buttons - Luxury Rounded */
+    [class*="Button"] {
+      border-radius: 12px !important;
+      text-transform: none !important;
+      font-weight: 600 !important;
+      letter-spacing: -0.01em !important;
+      transition: all 0.2s !important;
+    }
+
+    /* Category Labels (Special touch) */
+    span[title*="Category"] {
+      color: var(--madelina-gold) !important;
+      font-weight: bold !important;
+    }
+  </style>
+</head>
+<body>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+</body>
+</html>
