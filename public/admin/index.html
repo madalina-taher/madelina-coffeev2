@@ -1,66 +1,611 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Madelina | Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
   <style>
-    /* Apple-Style Minimalist UI */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
-      --madelina-gold: #C08261;
-      --madelina-navy: #1A2332;
-      --bg-soft: #FBFBFD;
+      --terra: #E07A5F;
+      --navy: #1B263B;
+      --cream: #FDFCF0;
+      --gold: #E9C46A;
+      --bg: #F5F4EF;
+      --white: #FFFFFF;
+      --border: rgba(27,38,59,.10);
+      --shadow: 0 4px 24px rgba(27,38,59,.07);
+      --radius: 18px;
     }
 
-    /* Global Reset */
-    body { background-color: var(--bg-soft) !important; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--navy); min-height: 100vh; }
 
-    /* Sidebar Clean Look */
-    .nc-app-container { background: white !important; }
-    aside { border-right: 1px solid #eee !important; background: white !important; }
+    /* ── AUTH SCREEN ── */
+    #auth-screen {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px;
+    }
+    .auth-card {
+      background: var(--white);
+      border-radius: 28px;
+      padding: 48px 40px;
+      width: 100%; max-width: 440px;
+      box-shadow: 0 20px 60px rgba(27,38,59,.12);
+      text-align: center;
+    }
+    .auth-logo {
+      width: 56px; height: 56px; border-radius: 50%;
+      border: 2px solid var(--terra);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+      font-family: 'DM Serif Display', serif;
+      font-size: 22px; color: var(--terra);
+    }
+    .auth-card h1 { font-family: 'DM Serif Display', serif; font-size: 28px; margin-bottom: 6px; }
+    .auth-card p { color: rgba(27,38,59,.5); font-size: 14px; margin-bottom: 32px; line-height: 1.6; }
+    .auth-card label { display: block; text-align: left; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: rgba(27,38,59,.4); margin-bottom: 8px; }
+    .auth-card input {
+      width: 100%; padding: 14px 18px;
+      border: 1.5px solid var(--border); border-radius: 14px;
+      font-size: 14px; font-family: 'Inter', sans-serif;
+      color: var(--navy); background: var(--bg);
+      outline: none; transition: border-color .2s;
+      margin-bottom: 20px;
+    }
+    .auth-card input:focus { border-color: var(--terra); background: var(--white); }
+    .btn-primary {
+      width: 100%; padding: 14px;
+      background: var(--terra); color: white;
+      border: none; border-radius: 14px;
+      font-size: 13px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .1em;
+      cursor: pointer; transition: all .2s;
+    }
+    .btn-primary:hover { opacity: .9; transform: translateY(-1px); }
+    .btn-primary:active { transform: scale(.98); }
+    .auth-hint { margin-top: 16px; font-size: 12px; color: rgba(27,38,59,.4); }
+    .auth-hint a { color: var(--terra); text-decoration: none; }
+    #auth-error { color: #e74c3c; font-size: 13px; margin-top: 12px; display: none; }
 
-    /* List Item - Modern Card Style */
-    [class*="ListItemContainer"] {
-      background: white !important;
-      border: 1px solid #f0f0f0 !important;
-      border-radius: 20px !important;
-      margin-bottom: 15px !important;
-      padding: 10px !important;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.01) !important;
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    /* ── MAIN APP ── */
+    #app { display: none; }
+
+    /* Header */
+    .topbar {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 32px;
+      height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .topbar-brand { display: flex; align-items: center; gap: 12px; }
+    .topbar-logo {
+      width: 40px; height: 40px; border-radius: 50%;
+      border: 2px solid var(--terra);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'DM Serif Display', serif; font-size: 16px; color: var(--terra);
+    }
+    .topbar-title { font-family: 'DM Serif Display', serif; font-size: 20px; }
+    .topbar-right { display: flex; align-items: center; gap: 12px; }
+    #repo-badge {
+      font-size: 11px; font-weight: 600;
+      background: rgba(27,38,59,.06);
+      border-radius: 8px; padding: 6px 12px;
+      color: rgba(27,38,59,.5);
+    }
+    .btn-logout {
+      padding: 8px 18px; border-radius: 10px;
+      border: 1.5px solid var(--border);
+      background: none; cursor: pointer;
+      font-size: 12px; font-weight: 600;
+      color: rgba(27,38,59,.5); transition: all .2s;
+    }
+    .btn-logout:hover { border-color: var(--terra); color: var(--terra); }
+
+    /* Main layout */
+    .main { padding: 32px; max-width: 1100px; margin: 0 auto; }
+
+    /* Stats bar */
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin-bottom: 32px; }
+    .stat-card {
+      background: var(--white); border-radius: var(--radius);
+      padding: 20px 24px; box-shadow: var(--shadow);
+    }
+    .stat-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: rgba(27,38,59,.4); margin-bottom: 6px; }
+    .stat-value { font-size: 28px; font-family: 'DM Serif Display', serif; color: var(--navy); }
+
+    /* Section header */
+    .section-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .section-header h2 { font-family: 'DM Serif Display', serif; font-size: 22px; }
+
+    /* Category tabs */
+    .cat-tabs { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+    .cat-tab {
+      padding: 8px 18px; border-radius: 50px;
+      border: 1.5px solid var(--border); background: var(--white);
+      cursor: pointer; font-size: 12px; font-weight: 600;
+      color: rgba(27,38,59,.6); transition: all .2s;
+    }
+    .cat-tab.active { background: var(--navy); color: white; border-color: var(--navy); }
+    .cat-tab:hover:not(.active) { border-color: var(--terra); color: var(--terra); }
+
+    /* Item grid */
+    #items-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+
+    /* Item card */
+    .item-card {
+      background: var(--white); border-radius: var(--radius);
+      overflow: hidden; box-shadow: var(--shadow);
+      transition: all .3s; border: 1.5px solid transparent;
+    }
+    .item-card:hover { box-shadow: 0 12px 32px rgba(27,38,59,.12); border-color: rgba(224,122,95,.15); }
+    .item-img { width: 100%; height: 160px; object-fit: cover; display: block; background: var(--bg); }
+    .item-body { padding: 16px 18px 18px; }
+    .item-cat { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--terra); margin-bottom: 6px; }
+    .item-name { font-family: 'DM Serif Display', serif; font-size: 17px; margin-bottom: 4px; }
+    .item-desc { font-size: 12px; color: rgba(27,38,59,.5); line-height: 1.5; margin-bottom: 12px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .item-footer { display: flex; align-items: center; justify-content: space-between; }
+    .item-price { font-weight: 700; color: var(--terra); font-size: 15px; }
+    .item-actions { display: flex; gap: 8px; }
+    .btn-edit, .btn-del {
+      padding: 6px 14px; border-radius: 8px;
+      border: none; cursor: pointer; font-size: 11px; font-weight: 700;
+      transition: all .15s;
+    }
+    .btn-edit { background: rgba(27,38,59,.06); color: var(--navy); }
+    .btn-edit:hover { background: var(--navy); color: white; }
+    .btn-del { background: rgba(231,76,60,.08); color: #e74c3c; }
+    .btn-del:hover { background: #e74c3c; color: white; }
+
+    /* Add button */
+    .btn-add {
+      padding: 11px 24px; border-radius: 12px;
+      background: var(--terra); color: white; border: none;
+      cursor: pointer; font-size: 12px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .1em;
+      display: flex; align-items: center; gap: 8px;
+      transition: all .2s; box-shadow: 0 4px 14px rgba(224,122,95,.35);
+    }
+    .btn-add:hover { opacity: .9; transform: translateY(-1px); }
+
+    /* Save bar */
+    #save-bar {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: var(--navy); color: white;
+      padding: 16px 32px;
+      display: none; align-items: center; justify-content: space-between;
+      z-index: 200; box-shadow: 0 -4px 24px rgba(0,0,0,.15);
+    }
+    #save-bar p { font-size: 14px; font-weight: 500; }
+    #save-bar p span { color: var(--gold); font-weight: 700; }
+    .btn-save {
+      padding: 12px 28px; border-radius: 12px;
+      background: var(--terra); color: white; border: none;
+      cursor: pointer; font-size: 13px; font-weight: 700;
+      transition: all .2s;
+    }
+    .btn-save:hover { opacity: .9; }
+    .btn-discard {
+      padding: 12px 20px; border-radius: 12px;
+      background: rgba(255,255,255,.1); color: white; border: none;
+      cursor: pointer; font-size: 13px; font-weight: 600;
+      margin-right: 10px;
     }
 
-    [class*="ListItemContainer"]:hover {
-      transform: scale(1.01);
-      border-color: var(--madelina-gold) !important;
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05) !important;
+    /* Modal */
+    .modal-overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.5); backdrop-filter: blur(4px);
+      z-index: 300; display: none; align-items: center; justify-content: center;
+      padding: 20px;
     }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: var(--white); border-radius: 28px;
+      padding: 36px; width: 100%; max-width: 520px;
+      max-height: 90vh; overflow-y: auto;
+      box-shadow: 0 30px 80px rgba(0,0,0,.2);
+    }
+    .modal h3 { font-family: 'DM Serif Display', serif; font-size: 22px; margin-bottom: 24px; }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: rgba(27,38,59,.4); margin-bottom: 8px; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 12px 16px;
+      border: 1.5px solid var(--border); border-radius: 12px;
+      font-size: 14px; font-family: 'Inter', sans-serif;
+      color: var(--navy); background: var(--bg); outline: none; transition: border-color .2s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--terra); background: var(--white);
+    }
+    .form-group textarea { resize: vertical; min-height: 80px; }
+    .modal-img-preview { width: 100%; height: 140px; object-fit: cover; border-radius: 12px; margin-bottom: 10px; display: none; }
+    .modal-actions { display: flex; gap: 10px; margin-top: 24px; }
+    .btn-modal-save { flex: 1; padding: 14px; border-radius: 12px; background: var(--terra); color: white; border: none; cursor: pointer; font-size: 13px; font-weight: 700; }
+    .btn-modal-cancel { padding: 14px 20px; border-radius: 12px; background: var(--bg); color: var(--navy); border: none; cursor: pointer; font-size: 13px; font-weight: 600; }
 
-    /* Summary Styling (Category name) */
-    [class*="ListCardSummary"] {
-      color: var(--madelina-navy) !important;
-      font-weight: 500 !important;
-      font-size: 14px !important;
+    /* Toast */
+    #toast {
+      position: fixed; top: 80px; right: 24px;
+      background: var(--navy); color: white;
+      padding: 14px 20px; border-radius: 14px;
+      font-size: 13px; font-weight: 600;
+      box-shadow: 0 8px 24px rgba(0,0,0,.2);
+      transform: translateY(-10px); opacity: 0;
+      transition: all .3s; z-index: 500;
+      pointer-events: none;
     }
+    #toast.show { transform: translateY(0); opacity: 1; }
+    #toast.success { background: #27ae60; }
+    #toast.error { background: #e74c3c; }
 
-    /* Buttons - Luxury Rounded */
-    [class*="Button"] {
-      border-radius: 12px !important;
-      text-transform: none !important;
-      font-weight: 600 !important;
-      letter-spacing: -0.01em !important;
-      transition: all 0.2s !important;
-    }
-
-    /* Category Labels (Special touch) */
-    span[title*="Category"] {
-      color: var(--madelina-gold) !important;
-      font-weight: bold !important;
-    }
+    /* Loading */
+    .loading { text-align: center; padding: 60px; color: rgba(27,38,59,.3); font-size: 14px; }
   </style>
 </head>
 <body>
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+<!-- AUTH SCREEN -->
+<div id="auth-screen">
+  <div class="auth-card">
+    <div class="auth-logo">M</div>
+    <h1>Madelina Admin</h1>
+    <p>Entrez votre GitHub Personal Access Token pour accéder au tableau de bord.</p>
+    <label for="token-input">GitHub Token (PAT)</label>
+    <input type="password" id="token-input" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off" />
+    <button class="btn-primary" onclick="login()">Connexion via GitHub</button>
+    <p id="auth-error">Token invalide ou accès refusé.</p>
+    <p class="auth-hint">
+      Générer un token sur <a href="https://github.com/settings/tokens/new?scopes=repo&description=Madelina+Admin" target="_blank">github.com/settings/tokens</a><br>
+      (Scope: <strong>repo</strong>)
+    </p>
+  </div>
+</div>
+
+<!-- MAIN APP -->
+<div id="app">
+  <div class="topbar">
+    <div class="topbar-brand">
+      <div class="topbar-logo">M</div>
+      <span class="topbar-title">Madelina Admin</span>
+    </div>
+    <div class="topbar-right">
+      <span id="repo-badge">madalina-taher/madelina-coffeev2</span>
+      <button class="btn-logout" onclick="logout()">Déconnexion</button>
+    </div>
+  </div>
+
+  <div class="main">
+    <!-- Stats -->
+    <div class="stats" id="stats-bar">
+      <div class="stat-card"><div class="stat-label">Total Plats</div><div class="stat-value" id="stat-total">—</div></div>
+      <div class="stat-card"><div class="stat-label">Café & Chaud</div><div class="stat-value" id="stat-cafe">—</div></div>
+      <div class="stat-card"><div class="stat-label">Jus & Frais</div><div class="stat-value" id="stat-jus">—</div></div>
+      <div class="stat-card"><div class="stat-label">Brunch & Plats</div><div class="stat-value" id="stat-brunch">—</div></div>
+    </div>
+
+    <!-- Items section -->
+    <div class="section-header">
+      <h2>La Carte Madelina</h2>
+      <button class="btn-add" onclick="openModal()">
+        <span>＋</span> Ajouter un plat
+      </button>
+    </div>
+
+    <!-- Category filter tabs -->
+    <div class="cat-tabs" id="cat-tabs"></div>
+
+    <!-- Grid -->
+    <div id="items-grid"><div class="loading">Chargement...</div></div>
+  </div>
+</div>
+
+<!-- SAVE BAR -->
+<div id="save-bar">
+  <p>Modifications non sauvegardées — <span id="change-count">0</span> changement(s)</p>
+  <div>
+    <button class="btn-discard" onclick="discardChanges()">Annuler</button>
+    <button class="btn-save" onclick="saveToGitHub()">💾 Sauvegarder sur GitHub</button>
+  </div>
+</div>
+
+<!-- EDIT/ADD MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <h3 id="modal-title">Ajouter un plat</h3>
+    <img id="modal-img-preview" class="modal-img-preview" alt="Preview" />
+    <div class="form-group">
+      <label>Catégorie</label>
+      <select id="f-cat">
+        <option value="☕ Café &amp; Chaud">☕ Café &amp; Chaud</option>
+        <option value="🥤 Jus &amp; Frais">🥤 Jus &amp; Frais</option>
+        <option value="🍳 Brunch &amp; Plats">🍳 Brunch &amp; Plats</option>
+        <option value="🍰 Gâteaux">🍰 Gâteaux</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Nom du plat</label>
+      <input type="text" id="f-title" placeholder="ex: Cappuccino" />
+    </div>
+    <div class="form-group">
+      <label>Prix (DT)</label>
+      <input type="number" id="f-price" step="0.001" min="0" placeholder="ex: 3.500" />
+    </div>
+    <div class="form-group">
+      <label>Image URL</label>
+      <input type="url" id="f-image" placeholder="https://..." oninput="previewImg(this.value)" />
+    </div>
+    <div class="form-group">
+      <label>Description (optionnel)</label>
+      <textarea id="f-desc" placeholder="Décrivez le plat..."></textarea>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-modal-cancel" onclick="closeModal()">Annuler</button>
+      <button class="btn-modal-save" onclick="saveItem()">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<script>
+const REPO = 'madalina-taher/madelina-coffeev2';
+const FILE_PATH = 'src/data/menu.json';
+const BRANCH = 'main';
+
+let token = '';
+let menuData = [];
+let originalData = '';
+let fileSha = '';
+let editingIndex = -1;
+let activeCategory = 'all';
+
+// ──── AUTH ────
+async function login() {
+  token = document.getElementById('token-input').value.trim();
+  if (!token) return;
+  try {
+    const r = await ghFetch(`https://api.github.com/repos/${REPO}`);
+    if (!r.ok) throw new Error();
+    document.getElementById('auth-screen').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    localStorage.setItem('madelina_token', token);
+    loadMenu();
+  } catch {
+    document.getElementById('auth-error').style.display = 'block';
+  }
+}
+
+function logout() {
+  localStorage.removeItem('madelina_token');
+  token = '';
+  document.getElementById('auth-screen').style.display = 'flex';
+  document.getElementById('app').style.display = 'none';
+}
+
+// Check saved token
+window.addEventListener('DOMContentLoaded', () => {
+  const saved = localStorage.getItem('madelina_token');
+  if (saved) {
+    token = saved;
+    document.getElementById('token-input').value = saved;
+    login();
+  }
+  document.getElementById('token-input').addEventListener('keydown', e => {
+    if (e.key === 'Enter') login();
+  });
+});
+
+// ──── GITHUB API ────
+function ghFetch(url, opts = {}) {
+  return fetch(url, {
+    ...opts,
+    headers: {
+      'Authorization': `token ${token}`,
+      'Content-Type': 'application/json',
+      ...(opts.headers || {})
+    }
+  });
+}
+
+async function loadMenu() {
+  const r = await ghFetch(`https://api.github.com/repos/${REPO}/contents/${FILE_PATH}?ref=${BRANCH}`);
+  const data = await r.json();
+  fileSha = data.sha;
+  const decoded = JSON.parse(atob(data.content.replace(/\n/g, '')));
+  menuData = decoded.plats || [];
+  originalData = JSON.stringify(menuData);
+  renderAll();
+}
+
+// ──── RENDER ────
+function renderAll() {
+  renderStats();
+  renderTabs();
+  renderGrid();
+  checkChanges();
+}
+
+function renderStats() {
+  const total = menuData.length;
+  const cafe = menuData.filter(i => i.category && i.category.includes('Café')).length;
+  const jus = menuData.filter(i => i.category && i.category.includes('Jus')).length;
+  const brunch = menuData.filter(i => i.category && i.category.includes('Brunch')).length;
+  document.getElementById('stat-total').textContent = total;
+  document.getElementById('stat-cafe').textContent = cafe;
+  document.getElementById('stat-jus').textContent = jus;
+  document.getElementById('stat-brunch').textContent = brunch;
+}
+
+function renderTabs() {
+  const cats = ['all', ...new Set(menuData.map(i => i.category).filter(Boolean))];
+  const container = document.getElementById('cat-tabs');
+  container.innerHTML = cats.map(cat => `
+    <button class="cat-tab ${cat === activeCategory ? 'active' : ''}"
+      onclick="filterCat('${cat.replace(/'/g, "\\'")}')">
+      ${cat === 'all' ? '🍽 Tous' : cat}
+    </button>
+  `).join('');
+}
+
+function filterCat(cat) {
+  activeCategory = cat;
+  renderTabs();
+  renderGrid();
+}
+
+function renderGrid() {
+  const filtered = activeCategory === 'all'
+    ? menuData
+    : menuData.filter(i => i.category === activeCategory);
+
+  if (filtered.length === 0) {
+    document.getElementById('items-grid').innerHTML = '<div class="loading">Aucun plat dans cette catégorie.</div>';
+    return;
+  }
+
+  document.getElementById('items-grid').innerHTML = filtered.map((item, fi) => {
+    const realIndex = menuData.indexOf(item);
+    return `
+    <div class="item-card">
+      <img class="item-img" src="${item.image || ''}" alt="${item.title || ''}"
+        onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22160%22><rect fill=%22%23f5f4ef%22 width=%22300%22 height=%22160%22/><text x=%22150%22 y=%2285%22 text-anchor=%22middle%22 fill=%22%23ccc%22 font-size=%2232%22>🍽</text></svg>'" />
+      <div class="item-body">
+        <div class="item-cat">${item.category || ''}</div>
+        <div class="item-name">${item.title || '—'}</div>
+        <div class="item-desc">${item.description || 'Aucune description.'}</div>
+        <div class="item-footer">
+          <span class="item-price">${typeof item.price === 'number' ? item.price.toFixed(3) : item.price || '—'} DT</span>
+          <div class="item-actions">
+            <button class="btn-edit" onclick="openModal(${realIndex})">✏️ Modifier</button>
+            <button class="btn-del" onclick="deleteItem(${realIndex})">🗑</button>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ──── MODAL ────
+function openModal(index = -1) {
+  editingIndex = index;
+  document.getElementById('modal-title').textContent = index === -1 ? 'Ajouter un plat' : 'Modifier le plat';
+  const item = index === -1 ? {} : menuData[index];
+  document.getElementById('f-cat').value = item.category || '☕ Café & Chaud';
+  document.getElementById('f-title').value = item.title || '';
+  document.getElementById('f-price').value = item.price || '';
+  document.getElementById('f-image').value = item.image || '';
+  document.getElementById('f-desc').value = item.description || '';
+  previewImg(item.image || '');
+  document.getElementById('modal').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+}
+
+function previewImg(url) {
+  const img = document.getElementById('modal-img-preview');
+  if (url && url.startsWith('http')) {
+    img.src = url;
+    img.style.display = 'block';
+  } else {
+    img.style.display = 'none';
+  }
+}
+
+function saveItem() {
+  const item = {
+    category: document.getElementById('f-cat').value,
+    title: document.getElementById('f-title').value.trim(),
+    price: parseFloat(document.getElementById('f-price').value) || 0,
+    image: document.getElementById('f-image').value.trim(),
+    description: document.getElementById('f-desc').value.trim()
+  };
+  if (!item.title) { showToast('Le nom est requis.', 'error'); return; }
+  if (editingIndex === -1) {
+    menuData.unshift(item);
+  } else {
+    menuData[editingIndex] = item;
+  }
+  closeModal();
+  renderAll();
+}
+
+function deleteItem(index) {
+  if (!confirm(`Supprimer "${menuData[index].title}" ?`)) return;
+  menuData.splice(index, 1);
+  renderAll();
+}
+
+// ──── SAVE / DISCARD ────
+function checkChanges() {
+  const changed = JSON.stringify(menuData) !== originalData;
+  const bar = document.getElementById('save-bar');
+  bar.style.display = changed ? 'flex' : 'none';
+  if (changed) {
+    const orig = JSON.parse(originalData);
+    document.getElementById('change-count').textContent = Math.abs(menuData.length - orig.length) || '~';
+  }
+}
+
+function discardChanges() {
+  menuData = JSON.parse(originalData);
+  renderAll();
+}
+
+async function saveToGitHub() {
+  const btn = document.querySelector('.btn-save');
+  btn.textContent = 'Sauvegarde...';
+  btn.disabled = true;
+  try {
+    const content = JSON.stringify({ plats: menuData }, null, 2);
+    const encoded = btoa(unescape(encodeURIComponent(content)));
+    const r = await ghFetch(`https://api.github.com/repos/${REPO}/contents/${FILE_PATH}`, {
+      method: 'PUT',
+      body: JSON.stringify({
+        message: '🍽 Admin: mise à jour de la carte Madelina',
+        content: encoded,
+        sha: fileSha,
+        branch: BRANCH
+      })
+    });
+    if (!r.ok) throw new Error(await r.text());
+    const data = await r.json();
+    fileSha = data.content.sha;
+    originalData = JSON.stringify(menuData);
+    showToast('✅ Carte sauvegardée sur GitHub !', 'success');
+    checkChanges();
+  } catch (e) {
+    showToast('❌ Erreur de sauvegarde.', 'error');
+    console.error(e);
+  } finally {
+    btn.textContent = '💾 Sauvegarder sur GitHub';
+    btn.disabled = false;
+  }
+}
+
+// ──── TOAST ────
+function showToast(msg, type = '') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = `show ${type}`;
+  setTimeout(() => t.className = '', 3000);
+}
+
+// Close modal on backdrop click
+document.getElementById('modal').addEventListener('click', e => {
+  if (e.target === document.getElementById('modal')) closeModal();
+});
+</script>
 </body>
 </html>
